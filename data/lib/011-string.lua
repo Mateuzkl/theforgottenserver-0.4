@@ -53,3 +53,44 @@ string.timediff = function (diff)
 
 	return t
 end
+
+string.diff = function (diff, short)
+	if short then
+		local format = {
+			{"w", diff / 60 / 60 / 24 / 7},
+			{"d", diff / 60 / 60 / 24 % 7},
+			{"h", diff / 60 / 60 % 24},
+			{"m", diff / 60 % 60},
+			{"s", diff % 60}
+		}
+
+		local t = {}
+		for k, v in ipairs(format) do
+			local d = math.floor(v[2])
+			if d > 0 then
+				table.insert(t, d .. v[1])
+			end
+		end
+
+		return table.concat(t, " ")
+	else
+		local format = {
+			{"week", diff / 60 / 60 / 24 / 7},
+			{"day", diff / 60 / 60 / 24 % 7},
+			{"hour", diff / 60 / 60 % 24},
+			{"minute", diff / 60 % 60},
+			{"second", diff % 60}
+		}
+
+		local t = {}
+		for k, v in ipairs(format) do
+			local d = math.floor(v[2])
+			if d > 0 then
+				local tmp = d .. " " .. v[1] .. (d ~= 1 and "s" or "")
+				table.insert(t, tmp)
+			end
+		end
+
+		return table.concat(t, ", ")
+	end
+end

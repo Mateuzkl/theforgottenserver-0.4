@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mod name="Experience Potion System" version="1.0" author="The Forgotten Server" contact="otland.net" enabled="yes">
+    <config name="exp_potion_config"><![CDATA[
+        config = {
+            potions = {
+                [6541] = {needLevel = 10, rate = 3.0, duration = 1800},
+                [6542] = {needLevel = 20, rate = 5.0, duration = 1800},
+                [6543] = {needLevel = 30, rate = 7.0, duration = 1800},
+                [6544] = {needLevel = 40, rate = 9.0, duration = 1800},
+                [6545] = {needLevel = 50, rate = 11.0, duration = 1800},
+                [2328] = {needLevel = 55, rate = 13.0, duration = 1800}
+            },
+            storage_total_exp = 30001,
+            storage_exp_end = 30000
+        }
+    ]]></config>
+ 
+    <action itemid="6541" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <action itemid="6542" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <action itemid="6543" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <action itemid="6544" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <action itemid="6545" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <action itemid="2328" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local itemId = item.itemid
+        local potion = config.potions[itemId]
+   
+        if not potion then
+            return false
+        end
+   
+        if getPlayerLevel(cid) < potion.needLevel then
+            doPlayerSendCancel(cid, ('Você precisa ser level %d+ para usar esta potion.'):format(potion.needLevel))
+            return true
+        end
+   
+        local now = os.time()
+        local currentExpEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if currentExpEnd > now then
+            local timeLeft = currentExpEnd - now
+            doPlayerSendCancel(cid, ('Você já tem um bônus de experiência ativo! Aguarde %s para usar outra potion.'):format(string.diff(timeLeft, true)))
+            return true
+        end
+        
+        doRemoveItem(item.uid, 1)
+        doPlayerSetExperienceRate(cid, potion.rate)
+        doSendMagicEffect(getThingPos(cid), CONST_ME_MAGIC_GREEN)
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Agora você tem +%d%% de experiência por %s.'):format(
+            potion.rate * 100, string.diff(potion.duration, true)
+        ))
+        
+        setPlayerStorageValue(cid, config.storage_exp_end, now + potion.duration)
+        addEvent(expPotionEnd, potion.duration * 1000, cid)
+        
+        return true
+    ]]></action>
+ 
+    <event type="login" name="ExpPotionLogin" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        
+        local now = os.time()
+        local expEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if expEnd <= now then
+            setPlayerStorageValue(cid, config.storage_exp_end, 0)
+            doPlayerSetExperienceRate(cid, 1)
+        else
+            local timeLeft = expEnd - now
+            doPlayerSetExperienceRate(cid, 3)
+            doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, ('Bônus de experiência ativo! Tempo restante: %s'):format(string.diff(timeLeft, true)))
+            addEvent(expPotionEnd, timeLeft * 1000, cid)
+        end
+    ]]></event>
+ 
+    <event type="logout" name="ExpPotionLogout" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        
+        local expEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        if expEnd > 0 then
+            setPlayerStorageValue(cid, config.storage_exp_end, 0)
+            doPlayerSetExperienceRate(cid, 1)
+        end
+    ]]></event>
+ 
+    <talkaction words="/expcombo" event="buffer"><![CDATA[
+        domodlib('exp_potion_config')
+        local str = 'Experience Potion System:\n'
+   
+        local now = os.time()
+        local expEnd = getPlayerStorageValue(cid, config.storage_exp_end)
+        
+        if expEnd > now then
+            str = str .. ('\nBônus ativo: +300%% de experiência')
+            str = str .. ('\nTempo restante: %s'):format(string.diff(expEnd - now, true))
+        else
+            str = str .. '\nNenhum bônus ativo'
+        end
+        
+        str = str .. '\n\nPotions disponíveis:'
+        for itemId, potion in pairs(config.potions) do
+            str = str .. ('\n%s - +%d%% (Level %d+)'):format(getItemInfo(itemId).name, potion.rate * 100, potion.needLevel)
+        end
+   
+        doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, str)
+        return true
+    ]]></talkaction>
+ 
+    <script name="expPotionEnd" event="buffer"><![CDATA[
+        function expPotionEnd(cid)
+            if isPlayer(cid) then
+                doPlayerSetExperienceRate(cid, 1)
+                doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, 'Seu bônus de experiência expirou!')
+            end
+        end
+    ]]></script>
+ 
+    <item id="6541" article="a" name="experience potion level 10" override="yes"/>
+    <item id="6542" article="a" name="experience potion level 20" override="yes"/>
+    <item id="6543" article="a" name="experience potion level 30" override="yes"/>
+    <item id="6544" article="a" name="experience potion level 40" override="yes"/>
+    <item id="6545" article="a" name="experience potion level 50" override="yes"/>
+    <item id="2328" article="a" name="experience potion level 55" override="yes"/>
+</mod> 

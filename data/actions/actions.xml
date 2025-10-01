@@ -64,7 +64,6 @@
 	<action itemid="8474" event="script" value="liquids/antidote_potion.lua"/>
 
 	<!-- Food -->
-	<action itemid="2328" event="script" value="foods/food.lua"/>
 	<action itemid="2362" event="script" value="foods/food.lua"/>
 	<action itemid="2666" event="script" value="foods/food.lua"/>
 	<action itemid="2667" event="script" value="foods/food.lua"/>
@@ -113,11 +112,7 @@
 	<action itemid="6393" event="script" value="foods/food.lua"/>
 	<action itemid="6394" event="script" value="foods/food.lua"/>
 	<action itemid="6501" event="script" value="foods/food.lua"/>
-	<action itemid="6541" event="script" value="foods/food.lua"/>
-	<action itemid="6542" event="script" value="foods/food.lua"/>
-	<action itemid="6543" event="script" value="foods/food.lua"/>
-	<action itemid="6544" event="script" value="foods/food.lua"/>
-	<action itemid="6545" event="script" value="foods/food.lua"/>
+
 	<action itemid="7158" event="script" value="foods/food.lua"/>
 	<action itemid="7159" event="script" value="foods/food.lua"/>
 	<action itemid="7372" event="script" value="foods/food.lua"/>
